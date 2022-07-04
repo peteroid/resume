@@ -4,7 +4,7 @@ import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoi
 import { avatarIdAtom, avatarUriState, coinPriceQuery, coinSymbolAtom } from '../model';
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const setAvatarId = useSetRecoilState(avatarIdAtom);
   const avatarUri = useRecoilValue(avatarUriState);
