@@ -44,7 +44,7 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
+  "_lint-staged": {
     "*.js": "next lint --fix --file",
     "*.css": "stylelint --fix"
   }
