@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { avatarIdAtom, avatarUriState, coinPriceQuery, coinSymbolAtom } from '../model';
 
+
+
 export default function Home() {
   const { t } = useTranslation();
 
