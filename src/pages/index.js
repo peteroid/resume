@@ -12,7 +12,10 @@ export default function Home() {
         <a className='underline' href='https://linkedin.com/in/peteroid'>
           Linkedin
         </a>
-        <a className='underline' href='https://drive.google.com/file/d/1acKX5RhWBtU51rprALCkctZ8ihFIkYcO/view?usp=sharing'>
+        <a
+          className='underline'
+          href='https://drive.google.com/file/d/1acKX5RhWBtU51rprALCkctZ8ihFIkYcO/view?usp=sharing'
+        >
           CV
         </a>
       </div>
