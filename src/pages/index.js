@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className='flex flex-col gap-4 p-4'>
-      <div>{`Home, ${t('title')}`}</div>
+      <div>{`Home page, ${t('title')}`}</div>
       <div>
         <Link href='/?lng=zh'>
           <a className='underline'>View zh-lang</a>
