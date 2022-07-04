@@ -1,45 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
-import { avatarIdAtom, avatarUriState, coinPriceQuery, coinSymbolAtom } from '../model';
-
 export default function Home() {
-  const { t } = useTranslation();
-
-  const setAvatarId = useSetRecoilState(avatarIdAtom);
-  const avatarUri = useRecoilValue(avatarUriState);
-
-  const setCoinSymbol = useSetRecoilState(coinSymbolAtom);
-  const coinPrice = useRecoilValueLoadable(coinPriceQuery);
-
   return (
-    <div className='flex flex-col gap-4 p-4'>
-      <div>{`Home, ${t('title')}`}</div>
-      <div>
-        <a className='underline' href='/?lng=zh'>
-          View zh-lang
+    <div className='h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex flex-col justify-center items-center text-white gap-8'>
+      <h2 className='text-xl'>Hello world!</h2>
+      <h1 className='text-xl'>
+        This is <span className='italic'>Peter Chow</span> <span className='text-4xl'>🐕</span>
+      </h1>
+      <div className='flex flex-col text-center gap-2'>
+        <a className='underline' href='https://github.com/peteroid'>
+          Github
         </a>
-        <br />
-        <a className='underline' href='/?lng=en'>
-          View en-lang
+        <a className='underline' href='https://linkedin.com/in/peteroid'>
+          Linkedin
         </a>
-        <br />
-        <a className='underline' href='/api/hello'>
-          API: hello
+        <a className='underline' href='https://drive.google.com/file/d/1acKX5RhWBtU51rprALCkctZ8ihFIkYcO/view?usp=sharing'>
+          CV
         </a>
-      </div>
-      <div>
-        <img src={avatarUri} className='w-40' />
-        <button className='text-2xl' onClick={() => setAvatarId(Date.now() % 100)}>
-          Random 🎲
-        </button>
-      </div>
-      <div>
-        <p>{coinPrice.state === 'hasValue' ? coinPrice.contents : coinPrice.state}</p>
-        <div className='flex gap-2'>
-          <button onClick={() => setCoinSymbol('BTCUSDT')}>BTC</button>
-          <button onClick={() => setCoinSymbol('ETHUSDT')}>ETH</button>
-          <button onClick={() => setCoinSymbol('LTCUSDT')}>LTC</button>
-        </div>
       </div>
     </div>
   );
