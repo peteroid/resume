@@ -17,9 +17,10 @@
     "eslint": "^8.19.0",
     "eslint-config-next": "12.2.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": ">=4",
     "lint-staged": ">=10",
-    "prettier": "^2.2.1",
+    "prettier": "^2.7.1",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
   },

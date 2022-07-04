@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { avatarIdAtom, avatarUriState, coinPriceQuery, coinSymbolAtom } from '../model';
@@ -15,20 +16,20 @@ export default function Home() {
     <div className='flex flex-col gap-4 p-4'>
       <div>{`Home, ${t('title')}`}</div>
       <div>
-        <a className='underline' href='/?lng=zh'>
-          View zh-lang
-        </a>
+        <Link href='/?lng=zh'>
+          <a className='underline'>View zh-lang</a>
+        </Link>
         <br />
-        <a className='underline' href='/?lng=en'>
-          View en-lang
-        </a>
+        <Link href='/?lng=en'>
+          <a className='underline'>View en-lang</a>
+        </Link>
         <br />
-        <a className='underline' href='/api/hello'>
-          API: hello
-        </a>
+        <Link href='/api/hello'>
+          <a className='underline'>API: hello</a>
+        </Link>
       </div>
       <div>
-        <img src={avatarUri} className='w-40' />
+        <img src={avatarUri} className='w-40' alt='avatar' />
         <button className='text-2xl' onClick={() => setAvatarId(Date.now() % 100)}>
           Random 🎲
         </button>
