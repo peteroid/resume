@@ -7,32 +7,34 @@ import { isDebug } from './dev';
 import enCommon from '../locales/en/common.json';
 import zhCommon from '../locales/zh/common.json';
 
-let hasInit = false;
-export const initI18n = () => {
-  if (hasInit) return;
-
-  i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      fallbackLng: 'en',
-      debug: isDebug(),
-      defaultNS: 'common',
-      ns: 'common',
-      resources: {
-        en: {
-          common: enCommon,
-        },
-        zh: {
-          common: zhCommon,
-        },
-      },
-      react: {
-        useSuspense: false,
-      },
-      interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
-      },
-    });
-  hasInit = true;
+const options = {
+  fallbackLng: 'en',
+  debug: isDebug(),
+  defaultNS: 'common',
+  ns: 'common',
+  resources: {
+    en: {
+      common: enCommon,
+    },
+    zh: {
+      common: zhCommon,
+    },
+  },
+  interpolation: {
+    escapeValue: false,
+  },
 };
+
+export const detectBestMatchLocale = () =>
+  new LanguageDetector(
+    {
+      languageUtils: {
+        getBestMatchFromCodes: false,
+      },
+    },
+    {}
+  ).detect();
+
+if (!i18n.isInitialized) i18n.use(initReactI18next).init(options);
+
+export default i18n;

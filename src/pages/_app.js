@@ -1,37 +1,43 @@
 import React, { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import Head from 'next/head';
-import { initI18n } from '../utilities/i18n';
 import GATag from '../components/GATag';
 import FbPixel from '../components/FbPixel';
+import i18n, { detectBestMatchLocale } from '../utilities/i18n';
 import '../styles/globals.css';
 
 const config = {
-  enableRecoil: false,
+  enableRecoil: true,
 };
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    // this is a workaround for SSR
+    // when the page is rendered on server, there is no detection
+    // so there will be content mismatch error raised by hydration
+    // on server, we render with default locale.
+    // on client, we redner with default locale for hydration and change to the detected locale
+    const locale = detectBestMatchLocale();
+    if (typeof locale !== 'string') return;
+    locale && i18n.changeLanguage(locale);
+  }, []);
+
   const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
-  useEffect(() => {
-    initI18n();
-  });
+  let component = <Component {...pageProps} />;
+  if (config.enableRecoil) {
+    component = <RecoilRoot>{component}</RecoilRoot>;
+  }
 
-  let appElem = (
+  return (
     <Layout>
       <Head>
         <GATag />
         <FbPixel />
       </Head>
-      <Component {...pageProps} />
+      {component}
     </Layout>
   );
-
-  if (config.enableRecoil) {
-    appElem = <RecoilRoot>{appElem}</RecoilRoot>;
-  }
-
-  return appElem;
 }
 
 export default MyApp;
