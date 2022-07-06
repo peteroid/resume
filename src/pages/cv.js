@@ -57,9 +57,39 @@ const TechIcon = ({ name, ...props }) => (
   </div>
 );
 
-const Progress = ({ value }) => (
-  <div className='w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700'>
-    <div className='bg-blue-600 h-2.5 rounded-full' style={{ width: value + '%' }}></div>
+const ExperienceBlock = ({ logo, title, company, description, utilized, date, location }) => (
+  <div className='mb-8'>
+    <section className='mb-4'>
+      <div className='flex justify-between items-start'>
+        <div className='flex items-center'>
+          <img className='w-10 mr-2' src={logo} alt='icon' />
+          <div>
+            <h2 className='font-semibold'>{title}</h2>
+            <h3 className=''>{company}</h3>
+          </div>
+        </div>
+        <p className='text-sm text-right'>
+          {date}
+          <br />
+          {location}
+        </p>
+      </div>
+    </section>
+    <section className='mb-4'>
+      <p className='whitespace-pre-wrap break-words'>{description}</p>
+    </section>
+    {!!utilized && (
+      <section className='mb-4 flex text-sm items-start'>
+        <h4 className='mr-2 italic'>Utilized:</h4>
+        <div className='flex items-start flex-wrap'>
+          {utilized.map((name) => (
+            <span key={name} className='rounded-full bg-gray-100 px-2 mr-2 mb-2'>
+              {name}
+            </span>
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 );
 
@@ -215,12 +245,91 @@ const Cv = () => {
       ],
     },
     profile: `An energetic, optimistic and motivated geek, who is enthusiastic about techs, hacks and dogs.`,
+    experiences: {
+      title: 'Experience',
+      items: [
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C560BAQFKQPQFNQrIVg/company-logo_100_100/0/1608545550416?e=1665014400&v=beta&t=3PnWxTIFVB_UhCiyOBcbAjtiGk3IK_vomReaUMx-fgw`,
+          date: 'Feb 2022',
+          title: 'Software Engineer',
+          company: 'Woven Planet Holdings, Toyota Group',
+          location: 'Tokyo, Japan',
+          description: `• Engineered the CMDB system and GWS integrations which will be used by 200k+ users
+• Developed the PoC on Cloud Search connectors to facilitate internal business decisions
+• Reviewed the system designs and proposed technical solutions to support internal business usage`,
+          utilized:
+            'AWS, Azure, Java, Rust, Chrome extension, Typescript, WebAssembly, Puppet'.split(', '),
+        },
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C4D0BAQHiNSL4Or29cg/company-logo_100_100/0/1519856215226?e=1665014400&v=beta&t=P_p1SZO88uxyjWSg5HDYpxCQeLhzGg9XhXDbDFProYQ`,
+          date: 'Jul 2019 - Jan 2022',
+          title: 'Technical Solutions Engineer',
+          company: 'Google',
+          location: 'Tokyo, Japan',
+          description: `• Led a functional group of 7+ people; Expertized in Apps Script and helped prioritize feature requests
+• Resolved escalations and debug for various Google Workspace products used by millions of users
+• Reviewed 4+ products’ supportability before launching to the general public`,
+          utilized:
+            'Google internal magic, GCP, Big Query, SQL, JavaScript, Java, Bash, Apps Scripts'.split(
+              ', '
+            ),
+        },
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C560BAQHcnlt77EM_3g/company-logo_100_100/0/1610965985718?e=1665014400&v=beta&t=Cs5ck6jGELinWPr-RtAz8a2ka1AKHWQ1SP4Vpm9it1U`,
+          date: 'Jun 2017 - Dec 2021',
+          title: 'Co-founder & CTO',
+          company: 'GRAVITONS LIMITED',
+          location: 'Hong Kong',
+          description: `• Joined MIT Sandbox (Boston), Lair East Labs (New York) and Cyberport Incubation Programme (HK)
+• Built the Gööp app with React Native and serverless architecture serving 12k+ DAU and 50k+ MAU
+• Built the Pastels app with native iOS and bridged with Unity to provide interactive exp. with celebrities`,
+          utilized: 'React Native, Redux, Firebase, Elastic Search, GCP, Unity, Fastlane'.split(
+            ', '
+          ),
+        },
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C560BAQE1IlqYF_4Z5A/company-logo_100_100/0/1519907582139?e=1665014400&v=beta&t=YGmalo2lnU65TAy5TG6NhqO5ds2LuT65jp_Qoa6XDOs`,
+          date: 'Nov 2067 - Jun 2017',
+          title: 'Web & QA Engineer Intern',
+          company: '9GAG, Inc',
+          location: 'Hong Kong',
+          description: `• Integrated E2E tests on the iOS, Android and React Native apps using Bash scripts and Appium
+• Reduced total build & delivery time in the CI/CD automation by 30% by refactoring the build scripts
+• Decreased post page size by ~70% by utilizing AMP; Researched the feasibility of implementing PWA`,
+          utilized:
+            'Appium, CircleCI, Xcode, React Native, AMP, PWA, JavaScript, Webpack, PHP, Laravel'.split(
+              ', '
+            ),
+        },
+      ],
+    },
+    educations: {
+      title: 'Education',
+      items: [
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C4D0BAQEubCTgcfA2sQ/company-logo_100_100/0/1519910081555?e=1665014400&v=beta&t=yXaXq4KUXYjbhmPzeFcWh6NCufkV_BNe2FCwzvqsD7E`,
+          date: 'Sep 2012 - Jun 2017',
+          title: 'Bachelor of Computer Engineering',
+          company: 'The University of Hong Kong (HKU)',
+          location: 'GPA: 3.27/4.30',
+          description: `• Coursework: Algorithms & Data Structures, Operating Systems, Networks, Computer Architecture, Artificial Intelligence, Databases, Functional Programming, Digital Systems & Circuits`,
+        },
+        {
+          logo: `https://media-exp1.licdn.com/dms/image/C560BAQEuZlXAuo608Q/company-logo_100_100/0/1570207210620?e=1665014400&v=beta&t=FKXl0H7vjuFjLAXxHflMDZeamXl-KVTtMZYN09pU1no`,
+          date: 'Jan 2016 - Jun 2016',
+          title: 'Bachelor of Computer Science and Engineering',
+          company: 'University of California, Irvine (UCI)',
+          location: 'Dean list - GPA: 3.95/4.00',
+          description: `• Coursework: Machine Learning & Data Mining, Compilers, Embedded Systems`,
+        },
+      ],
+    },
   };
 
   return (
-    <div className='relative sm:p-8'>
+    <div className='relative sm:p-8 md:p-12'>
       <div className='bg-pattern-zigzag absolute inset-0' />
-      <main className='flex flex-col sm:flex-row-reverse shadow-2xl z-10 relative'>
+      <main className='flex flex-col sm:flex-row-reverse shadow-2xl z-10 relative md:max-w-6xl mx-auto'>
         <div className='bg-white w-full sm:max-w-xs px-6 py-8 relative'>
           <div className='bg-pattern-polka absolute inset-0' />
           <div className='relative'>
@@ -288,49 +397,19 @@ const Cv = () => {
           </div>
           <hr className='my-4' />
           <div className=''>
-            <h2 className='font-semibold text-lg'>Experience</h2>
-            <div>
-              <h3>Example Inc</h3>
-              <section className='mb-6'>
-                <div className='lg:inline-block lg:w-3/12 lg:align-top italic mb-2'>
-                  Jul.&nbsp;2019:
-                </div>
-                <div className='lg:inline-block lg:w-8/12 w-full'>Fullstack Developer</div>
-              </section>
-              <section className='mb-6'>
-                <div className='lg:inline-block lg:w-3/12 lg:align-top italic mb-2'>Task:</div>
-                <div className='lg:inline-block lg:w-8/12 w-full'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
-              </section>
-              <section className='mb-6'>
-                <div className='lg:inline-block lg:w-3/12 lg:align-top italic mb-2'>
-                  Description:
-                </div>
-                <div className='lg:inline-block lg:w-8/12 w-full'>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-              </section>
-              <section className='mb-6'>
-                <div className='lg:inline-block lg:w-3/12 lg:align-top italic mb-2'>Tools:</div>
-                <div className='lg:inline-block lg:w-8/12 w-full'>
-                  <span className='rounded-xl bg-gray-300 px-3'>Vue</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Vuex</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Bootstrap</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Docker</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Git</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Bitbucket</span>
-                  <span className='rounded-xl bg-gray-300 px-3'>Jira</span>
-                </div>
-              </section>
-            </div>
+            <h2 className='font-semibold text-lg mb-4'>{data.experiences.title}</h2>
+            {data.experiences.items.map((exp) => (
+              <ExperienceBlock key={exp.company} {...exp} />
+            ))}
+          </div>
+          <div className=''>
+            <h2 className='font-semibold text-lg mb-4'>{data.educations.title}</h2>
+            {data.educations.items.map((exp) => (
+              <ExperienceBlock key={exp.company} {...exp} />
+            ))}
           </div>
           <hr className='mt-8 mb-8' />
-          <div id='projects' className='prose'>
+          {/* <div id='projects' className='prose'>
             <h2 className='font-semibold text-lg'>Projects</h2>
             <div className='mb-16'>
               <h3 id='chrisko-headline'>Chrisko.io</h3>
@@ -414,7 +493,7 @@ const Cv = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </div>
