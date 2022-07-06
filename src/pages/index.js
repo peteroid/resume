@@ -15,6 +15,11 @@ export default function Home() {
       emoji: '📇',
       url: 'https://drive.google.com/file/d/1acKX5RhWBtU51rprALCkctZ8ihFIkYcO/view?usp=sharing',
     },
+    {
+      name: 'CV',
+      emoji: '🔮',
+      url: '/cv',
+    },
   ];
 
   return (
