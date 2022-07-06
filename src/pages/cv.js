@@ -171,20 +171,20 @@ const Cv = () => {
           title: 'DB / Infra / Devops',
           items: [
             'Docker',
+            'Github Actions',
             'Travis',
             'Jest',
-            'Github Actions',
-            'Firebase',
+            'Git',
             'AWS',
             'GCP',
             'Nginx',
-            'Git',
+            'Firebase',
             'MongoDB',
             'MySQL',
             'SQLite',
+            'Redis',
             'PostgreSql',
             'RabbitMQ',
-            'Redis',
           ],
         },
         {
@@ -197,7 +197,11 @@ const Cv = () => {
       title: 'Languages',
       items: [
         {
-          name: 'Chinese',
+          name: 'Cantonese',
+          level: 'Native',
+        },
+        {
+          name: 'Mandarin',
           level: 'Native',
         },
         {
@@ -214,10 +218,10 @@ const Cv = () => {
   };
 
   return (
-    <div className='relative sm:p-12'>
+    <div className='relative sm:p-8'>
       <div className='bg-pattern-zigzag absolute inset-0' />
       <main className='flex flex-col sm:flex-row-reverse shadow-2xl z-10 relative'>
-        <div className='w-full sm:max-w-xs px-6 py-8 relative'>
+        <div className='bg-white w-full sm:max-w-xs px-6 py-8 relative'>
           <div className='bg-pattern-polka absolute inset-0' />
           <div className='relative'>
             <div className='px-2 mb-8'>
@@ -226,15 +230,15 @@ const Cv = () => {
                 alt='Profile Picture'
                 className='rounded-full w-40 mx-auto mb-2'
               />
-              <h1 className='text-center text-3xl font-semibold mb-2'>{data.name}</h1>
+              <h1 className='text-center text-3xl font-semibold'>{data.name}</h1>
               <h2 className='text-center text-xl font-light'>{data.title}</h2>
             </div>
 
             {data.infoBlocks.map(({ title, items }) => (
-              <div key={title} className='font-light text-lg px-2 mb-8'>
-                <h2 className='font-semibold mb-2'>{title}</h2>
+              <div key={title} className='font-light px-2 mb-8'>
+                <h2 className='font-semibold mb-2 text-lg'>{title}</h2>
                 {items.map(({ icon: Icon, content, href }) => (
-                  <div key={content} className='flex items-center my-2'>
+                  <div key={content} className='flex items-center my-2 text-base'>
                     {typeof Icon === 'string' ? (
                       <img className='inline w-6 mr-2' src={Icon} alt={content} />
                     ) : (
@@ -252,11 +256,11 @@ const Cv = () => {
               </div>
             ))}
 
-            <div className='font-light text-lg px-2 mb-8'>
-              <h2 className='text-xl font-semibold mb-2'>{data.skills.title}</h2>
+            <div className='font-light px-2 mb-8'>
+              <h2 className='text-lg font-semibold mb-2'>{data.skills.title}</h2>
               {data.skills.items.map(({ title, items }) => (
                 <div key={title} className='mb-4'>
-                  <h3>{title}</h3>
+                  <h3 className='mb-2'>{title}</h3>
                   <div className='flex gap-1 flex-wrap'>
                     {items.map((name) => (
                       <TechIcon key={name} className='inline-block' name={name} />
@@ -266,8 +270,8 @@ const Cv = () => {
               ))}
             </div>
 
-            <div className='font-light text-lg px-2 mb-8'>
-              <h2 className='text-xl font-semibold mb-2'>{data.languages.title}</h2>
+            <div className='font-light px-2 mb-8'>
+              <h2 className='text-lg font-semibold mb-2'>{data.languages.title}</h2>
               {data.languages.items.map(({ name, level }) => (
                 <div key={name} className='mb-2 flex items-center'>
                   <h3 className='w-24'>{name}</h3>
@@ -277,14 +281,14 @@ const Cv = () => {
             </div>
           </div>
         </div>
-        <div className='w-full p-12 overflow-auto bg-white'>
-          <div id='profile' className='prose'>
-            <h2 className='section-headline'>Profile</h2>
+        <div className='w-full p-8 overflow-auto bg-white'>
+          <div className=''>
+            <h2 className='font-semibold text-lg'>Short bio</h2>
             <p>{data.profile}</p>
           </div>
-          <hr className='mt-8 mb-8' />
-          <div id='experience' className='prose'>
-            <h2 className='section-headline'>Experience</h2>
+          <hr className='my-4' />
+          <div className=''>
+            <h2 className='font-semibold text-lg'>Experience</h2>
             <div>
               <h3>Example Inc</h3>
               <section className='mb-6'>
@@ -327,7 +331,7 @@ const Cv = () => {
           </div>
           <hr className='mt-8 mb-8' />
           <div id='projects' className='prose'>
-            <h2 className='section-headline'>Projects</h2>
+            <h2 className='font-semibold text-lg'>Projects</h2>
             <div className='mb-16'>
               <h3 id='chrisko-headline'>Chrisko.io</h3>
               <section className='mb-6'>
@@ -391,7 +395,7 @@ const Cv = () => {
           </div>
           <hr className='mt-8 mb-8' />
           <div id='projects' className='prose'>
-            <h2 className='section-headline'>Expand my skills</h2>
+            <h2 className='font-semibold text-lg'>Expand my skills</h2>
             <div className='mb-16'>
               <h4 id='expand-knowledge-headline'>
                 {`I'd like to expand my skills and knowledge in several fields`}
