@@ -60,19 +60,18 @@ const TechIcon = ({ name, ...props }) => (
 const ExperienceBlock = ({ logo, title, company, description, utilized, date, location }) => (
   <div className='mb-8'>
     <section className='mb-4'>
-      <div className='flex justify-between items-start'>
-        <div className='flex items-center'>
-          <img className='w-10 mr-2' src={logo} alt='icon' />
+      <div className='flex items-center flex-row'>
+        <img className='md:w-10 w-12 mr-4' src={logo} alt='icon' />
+        <div className='flex flex-col md:flex-row items-start md:justify-between flex-1'>
           <div>
             <h2 className='font-semibold'>{title}</h2>
             <h3 className=''>{company}</h3>
           </div>
+          <p className='text-sm flex flex-row flex-wrap md:items-end md:flex-col'>
+            <span className='whitespace-nowrap mr-4 md:mr-0'>{location}</span>
+            <span className='whitespace-nowrap'>{date}</span>
+          </p>
         </div>
-        <p className='text-sm text-right'>
-          {date}
-          <br />
-          {location}
-        </p>
       </div>
     </section>
     <section className='mb-4'>
@@ -231,11 +230,11 @@ const Cv = () => {
           level: 'Native',
         },
         {
-          name: 'Mandarin',
-          level: 'Native',
+          name: 'English',
+          level: 'Fluent',
         },
         {
-          name: 'English',
+          name: 'Mandarin',
           level: 'Fluent',
         },
         {
