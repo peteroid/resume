@@ -288,7 +288,7 @@ const Cv = () => {
         },
         {
           logo: `https://media-exp1.licdn.com/dms/image/C560BAQE1IlqYF_4Z5A/company-logo_100_100/0/1519907582139?e=1665014400&v=beta&t=YGmalo2lnU65TAy5TG6NhqO5ds2LuT65jp_Qoa6XDOs`,
-          date: 'Nov 2067 - Jun 2017',
+          date: 'Nov 2016 - Jun 2017',
           title: 'Web & QA Engineer Intern',
           company: '9GAG, Inc',
           location: 'Hong Kong',
