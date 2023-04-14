@@ -13,7 +13,7 @@ export default function Home() {
     {
       name: 'Résumé',
       emoji: '📇',
-      url: 'https://drive.google.com/file/d/1acKX5RhWBtU51rprALCkctZ8ihFIkYcO/view?usp=sharing',
+      url: '/d/resume',
     },
     {
       name: 'CV',
