@@ -1,4 +1,5 @@
 import { GlobeIcon, LocationMarkerIcon, MailIcon, PhoneIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
 
 const iconEndpoint = {
   material:
@@ -16,6 +17,8 @@ const iconMap = {
   amp: 'https://seeklogo.com/images/A/amp-logo-6C8CA951C7-seeklogo.com.png',
   spark: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg',
   keras: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg',
+  kafka:
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Apache_kafka.svg/1200px-Apache_kafka.svg.png',
 };
 const getIconUrl = (name) => {
   let endpoint = iconEndpoint.material;
@@ -33,7 +36,11 @@ const getIconUrl = (name) => {
 
   if (/(flutter)|(java$)|(shell)|(elastic)|(aws)|(mongo)|(sqlite)/.test(slug))
     endpoint = iconEndpoint.vs;
-  if (/(unity)|(wordpress)|(shopify)|(github)|(redis)|(sql$)|(hadoop)|(tensorflow)/.test(slug))
+  if (
+    /(unity)|(wordpress)|(shopify)|(github)|(redis)|(sql$)|(hadoop)|(tensorflow)|(kubernetes)|(kafka)/.test(
+      slug
+    )
+  )
     endpoint = iconEndpoint.icon8;
 
   if (slug.includes('mysql')) slug = 'mysql-logo';
@@ -45,12 +52,15 @@ const TechIcon = ({ name, ...props }) => (
   <div {...props}>
     <div className='flex items-center bg-gray-50 px-2 py-1 rounded-full'>
       {!name.startsWith('_') && (
-        <img
-          className='mr-1 max-w-5 h-5'
-          src={getIconUrl(name)}
-          onError={() => console.log('ddasd')}
-          alt={`${name} icon`}
-        />
+        <div className='mr-1 w-5 h-5 relative'>
+          <Image
+            layout='fill'
+            className='object-contain'
+            src={getIconUrl(name)}
+            onError={() => console.log('ddasd')}
+            alt={`${name} icon`}
+          />
+        </div>
       )}
       <span className='text-sm'>{name.replace(/\_/, '')}</span>
     </div>
@@ -156,15 +166,16 @@ const Cv = () => {
           title: 'Languages',
           items: [
             'JavaScript',
+            'Go',
             'Shell',
             'Java',
             'TypeScript',
+            'Dart',
             'C#',
             'C/C++',
             'Python',
             'Haskell',
             'Scala',
-            'Rust',
             'Lua',
             'PHP',
             'HTML',
@@ -200,6 +211,7 @@ const Cv = () => {
           title: 'DB / Infra / Devops',
           items: [
             'Docker',
+            'Kubernetes',
             'Github Actions',
             'Travis',
             'Jest',
@@ -212,6 +224,7 @@ const Cv = () => {
             'MySQL',
             'SQLite',
             'Redis',
+            'Kafka',
             'PostgreSql',
             'RabbitMQ',
           ],
@@ -248,8 +261,8 @@ const Cv = () => {
       title: 'Experience',
       items: [
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C560BAQFKQPQFNQrIVg/company-logo_100_100/0/1608545550416?e=1665014400&v=beta&t=3PnWxTIFVB_UhCiyOBcbAjtiGk3IK_vomReaUMx-fgw`,
-          date: 'Feb 2022',
+          logo: `/wp.jpeg`,
+          date: 'Feb 2022 - now',
           title: 'Software Engineer',
           company: 'Woven Planet Holdings, Toyota Group',
           location: 'Tokyo, Japan',
@@ -260,7 +273,7 @@ const Cv = () => {
             'AWS, Azure, Java, Rust, Chrome extension, Typescript, WebAssembly, Puppet'.split(', '),
         },
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C4D0BAQHiNSL4Or29cg/company-logo_100_100/0/1519856215226?e=1665014400&v=beta&t=P_p1SZO88uxyjWSg5HDYpxCQeLhzGg9XhXDbDFProYQ`,
+          logo: `/google.jpeg`,
           date: 'Jul 2019 - Jan 2022',
           title: 'Technical Solutions Engineer',
           company: 'Google',
@@ -274,7 +287,7 @@ const Cv = () => {
             ),
         },
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C560BAQHcnlt77EM_3g/company-logo_100_100/0/1610965985718?e=1665014400&v=beta&t=Cs5ck6jGELinWPr-RtAz8a2ka1AKHWQ1SP4Vpm9it1U`,
+          logo: `/gravitons.jpeg`,
           date: 'Jun 2017 - Dec 2021',
           title: 'Co-founder & CTO',
           company: 'GRAVITONS LIMITED',
@@ -287,7 +300,7 @@ const Cv = () => {
           ),
         },
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C560BAQE1IlqYF_4Z5A/company-logo_100_100/0/1519907582139?e=1665014400&v=beta&t=YGmalo2lnU65TAy5TG6NhqO5ds2LuT65jp_Qoa6XDOs`,
+          logo: `/9gag.jpeg`,
           date: 'Nov 2016 - Jun 2017',
           title: 'Web & QA Engineer Intern',
           company: '9GAG, Inc',
@@ -306,7 +319,7 @@ const Cv = () => {
       title: 'Education',
       items: [
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C4D0BAQEubCTgcfA2sQ/company-logo_100_100/0/1519910081555?e=1665014400&v=beta&t=yXaXq4KUXYjbhmPzeFcWh6NCufkV_BNe2FCwzvqsD7E`,
+          logo: `/hku.jpeg`,
           date: 'Sep 2012 - Jun 2017',
           title: 'Bachelor of Computer Engineering',
           company: 'The University of Hong Kong (HKU)',
@@ -314,7 +327,7 @@ const Cv = () => {
           description: `• Coursework: Algorithms & Data Structures, Operating Systems, Networks, Computer Architecture, Artificial Intelligence, Databases, Functional Programming, Digital Systems & Circuits`,
         },
         {
-          logo: `https://media-exp1.licdn.com/dms/image/C560BAQEuZlXAuo608Q/company-logo_100_100/0/1570207210620?e=1665014400&v=beta&t=FKXl0H7vjuFjLAXxHflMDZeamXl-KVTtMZYN09pU1no`,
+          logo: `/uci.jpeg`,
           date: 'Jan 2016 - Jun 2016',
           title: 'Bachelor of Computer Science and Engineering',
           company: 'University of California, Irvine (UCI)',
